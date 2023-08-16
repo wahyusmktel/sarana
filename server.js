@@ -9,6 +9,9 @@ const kategoriRuangRoutes = require('./routes/kategoriRuangRoutes');
 const ruangRoutes = require('./routes/ruangRoutes');
 const tahunPelajaranRoutes = require('./routes/tahunPelajaranRoutes');
 const kondisiRuangRoutes = require('./routes/kondisiRuangRoutes');
+const jenisAlatRoutes = require('./routes/jenisAlatRoutes');
+const asetAlatRoutes = require('./routes/asetAlatRoutes');
+const kategoriAlatRoutes = require('./routes/kategoriAlatRoutes');
 
 const app = express();
 
@@ -26,6 +29,9 @@ app.use('/api/kategori_ruang', kategoriRuangRoutes);
 app.use('/api/ruang', ruangRoutes);
 app.use('/api/tahun_pelajaran', tahunPelajaranRoutes);
 app.use('/api/kondisi_ruang', kondisiRuangRoutes);
+app.use('/api/jenis_alat', jenisAlatRoutes);
+app.use('/api/aset_alat', asetAlatRoutes);
+app.use('/api/kategori_alat', kategoriAlatRoutes);
 
 const PORT = process.env.PORT || 5000;
 

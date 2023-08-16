@@ -7,6 +7,8 @@ const jenisPrasaranaBangunanRoutes = require('./routes/jenisPrasaranaBangunanRou
 const bangunanRoutes = require('./routes/bangunanRoutes');
 const kategoriRuangRoutes = require('./routes/kategoriRuangRoutes');
 const ruangRoutes = require('./routes/ruangRoutes');
+const tahunPelajaranRoutes = require('./routes/tahunPelajaranRoutes');
+const kondisiRuangRoutes = require('./routes/kondisiRuangRoutes');
 
 const app = express();
 
@@ -22,6 +24,8 @@ app.use('/api/jenis_prasarana_bangunan', jenisPrasaranaBangunanRoutes);
 app.use('/api/bangunan', bangunanRoutes);
 app.use('/api/kategori_ruang', kategoriRuangRoutes);
 app.use('/api/ruang', ruangRoutes);
+app.use('/api/tahun_pelajaran', tahunPelajaranRoutes);
+app.use('/api/kondisi_ruang', kondisiRuangRoutes);
 
 const PORT = process.env.PORT || 5000;
 

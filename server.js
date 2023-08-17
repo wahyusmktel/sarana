@@ -14,6 +14,9 @@ const asetAlatRoutes = require('./routes/asetAlatRoutes');
 const kategoriAlatRoutes = require('./routes/kategoriAlatRoutes');
 const jenisSaranaAngkutanRoutes = require('./routes/jenisSaranaAngkutanRoutes');
 const angkutanRoutes = require('./routes/angkutanRoutes');
+const kategoriBukuRoutes = require('./routes/kategoriBukuRoutes');
+const bukuRoutes = require('./routes/bukuRoutes');
+const penerbitBukuRoutes = require('./routes/penerbitBukuRoutes');
 
 const app = express();
 
@@ -36,6 +39,9 @@ app.use('/api/aset_alat', asetAlatRoutes);
 app.use('/api/kategori_alat', kategoriAlatRoutes);
 app.use('/api/jenis_sarana_angkutan', jenisSaranaAngkutanRoutes);
 app.use('/api/angkutan', angkutanRoutes);
+app.use('/api/kategori_buku', kategoriBukuRoutes);
+app.use('/api/buku', bukuRoutes);
+app.use('/api/penerbit_buku', penerbitBukuRoutes);
 
 const PORT = process.env.PORT || 5000;
 

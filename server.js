@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const authController = require('./controllers/authController');
+const { authenticate } = require('./middleware/auth');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -17,6 +21,7 @@ const angkutanRoutes = require('./routes/angkutanRoutes');
 const kategoriBukuRoutes = require('./routes/kategoriBukuRoutes');
 const bukuRoutes = require('./routes/bukuRoutes');
 const penerbitBukuRoutes = require('./routes/penerbitBukuRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -26,6 +31,9 @@ app.use(bodyParser.json());
 
 // Routes
 // app.use('/api/items', require('./routes/items'));
+app.post('/api/login', authController.loginUser);
+app.use('/api/users', userRoutes);
+app.use(authenticate);
 app.use('/api/jenis_prasarana', jenisPrasaranaRoutes);
 app.use('/api/tanah_bangunan', tanahBangunanRoutes);
 app.use('/api/jenis_prasarana_bangunan', jenisPrasaranaBangunanRoutes);

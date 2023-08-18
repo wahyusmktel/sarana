@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const authController = require('./controllers/authController');
 const { authenticate } = require('./middleware/auth');
+const roleMiddleware = require('./middleware/roleMiddleware');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -34,7 +35,8 @@ app.use(bodyParser.json());
 app.post('/api/login', authController.loginUser);
 app.use('/api/users', userRoutes);
 app.use(authenticate);
-app.use('/api/jenis_prasarana', jenisPrasaranaRoutes);
+// app.use('/api/jenis_prasarana', jenisPrasaranaRoutes);
+app.use('/api/jenis_prasarana', roleMiddleware(['Super Admin']), jenisPrasaranaRoutes);
 app.use('/api/tanah_bangunan', tanahBangunanRoutes);
 app.use('/api/jenis_prasarana_bangunan', jenisPrasaranaBangunanRoutes);
 app.use('/api/bangunan', bangunanRoutes);

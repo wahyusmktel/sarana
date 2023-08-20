@@ -20,7 +20,18 @@ async function loginUser(req, res) {
       .first();
     
     const token = generateToken(user, userRole.role);
-    res.json({ token });
+    // res.json({ token });
+    
+    // Set cookie dengan token JWT
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // gunakan cookie yang aman (secure) di produksi (over HTTPS)
+      maxAge: 3600000 // 1 jam dalam milidetik
+    });
+    
+    // Kirim response ke browser
+    res.status(200).json({ message: 'User authenticated', token });
+
   } catch (err) {
     res.status(500).json({ message: 'Error logging in', error: err });
   }

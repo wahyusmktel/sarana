@@ -27,8 +27,25 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 
 // Middleware
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
+
+const corsOptions = {
+  origin: 'http://localhost:3000',  
+  credentials: true,                
+  optionsSuccessStatus: 204
+}
+
+app.use(cors(corsOptions));
+
+// Define a new route to check authentication
+app.get('/api/check-auth', (req, res) => {
+  // Your middleware to check authentication
+  // This should be the same middleware you use to protect your other routes
+  authenticate(req, res, () => {
+    res.status(200).send('Authenticated');
+  });
+});
 
 // Routes
 // app.use('/api/items', require('./routes/items'));
